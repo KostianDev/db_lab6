@@ -1,4 +1,4 @@
-export const validateData = (data) => {
+export const validateData = ( data ) => {
     const requiredFields = [
         'name',
         'description',
@@ -9,7 +9,7 @@ export const validateData = (data) => {
 
     for (const field of requiredFields) {
         if (!data[field]) {
-            throw new Error(`Missing required field: ${field}`);
+            throw new Error(`Missing required field: ${ field }`);
         }
     }
 };
