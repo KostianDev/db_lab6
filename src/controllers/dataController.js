@@ -47,7 +47,9 @@ class dataController {
     };
 
     async createData(req, res) {
-        const { name, description, format, content, createdAt } = req.body;
+        const { name, description, format, content, category_id } = req.body;
+        const createdAt = new Date();
+        const updatedAt = new Date();
 
         try {
             validateData(req.body);
@@ -56,18 +58,22 @@ class dataController {
                 description,
                 format,
                 content,
-                createdAt
+                createdAt,
+                updatedAt,
+                category_id
             ]);
 
             res.status(201).json({
-                message: 'Data created',
+                message: 'Data created successfully',
                 data: {
                     data_id: response.insertId,
                     name,
                     description,
                     format,
                     content,
-                    createdAt
+                    createdAt,
+                    updatedAt,
+                    category_id
                 }
             });
         } catch (error) {
@@ -77,17 +83,18 @@ class dataController {
 
     async updateData(req, res) {
         const { id } = req.params;
-        const { name, description, format, content, createdAt, updatedAt } = req.body;
+        const { name, description, format, content, category_id } = req.body;
+        const updatedAt = new Date();
 
         try {
-            validateData(name, description, format, content);
+            validateData(req.body);
             const [response] = await pool.execute(dataSQL.updateDataById, [
                 name,
                 description,
                 format,
                 content,
-                createdAt,
                 updatedAt,
+                category_id,
                 id
             ]);
 

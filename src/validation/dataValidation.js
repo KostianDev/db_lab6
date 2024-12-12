@@ -4,7 +4,7 @@ export const validateData = ( data ) => {
         'description',
         'format',
         'content',
-        'createdAt'
+        'category_id'
     ];
 
     for (const field of requiredFields) {

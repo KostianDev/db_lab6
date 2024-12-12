@@ -2,8 +2,8 @@ export const dataSQL = {
     findData: 'SELECT * FROM data',
     findDataById: 'SELECT * FROM data WHERE data_id = ?',
     findDataByName: 'SELECT * FROM data WHERE name = ?',
-    createData: 'INSERT INTO data (name, description, format, content, createdAt) VALUES (?, ?, ?, ?, GETDATE())',
-    updateDataById: 'UPDATE data SET name = ?, description = ?, format = ?, content = ?, updatedAt = GETDATE() WHERE data_id = ?',
+    createData: 'INSERT INTO data (name, description, format, content, createdAt, updatedAt, category_id) VALUES (?, ?, ?, ?, ?, ?, ?)',
+    updateDataById: 'UPDATE data SET name = ?, description = ?, format = ?, content = ?, updatedAt = ?, category_id = ? WHERE data_id = ?',
     deleteDataById: 'DELETE FROM data WHERE data_id = ?',
 };
 
